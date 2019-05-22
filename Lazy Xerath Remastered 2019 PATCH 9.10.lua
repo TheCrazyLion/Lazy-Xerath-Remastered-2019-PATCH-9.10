@@ -1,4 +1,4 @@
--- Lazy Xerath
+-- Lazy Xerath Remastered
 
 if myHero.charName ~= "Xerath" then return end
 
