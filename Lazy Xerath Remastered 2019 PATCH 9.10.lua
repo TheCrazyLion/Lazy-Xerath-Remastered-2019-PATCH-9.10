@@ -466,7 +466,7 @@ local ticker = GetTickCount()
 					Control.SetCursorPos(castSpell.mouse)
 					castSpell.state = 0
 				end
-			end,Game.Latency()/500)
+			end,Game.Latency()/200)
 		end
 		if ticker - castSpell.casting > Game.Latency() then
 			Control.SetCursorPos(castSpell.mouse)
@@ -496,7 +496,7 @@ local ticker = GetTickCount()
 					Control.SetCursorPos(castSpell.mouse)
 					castSpell.state = 0
 				end
-			end,Game.Latency()/500)
+			end,Game.Latency()/200)
 		end
 		if ticker - castSpell.casting > Game.Latency() then
 			Control.SetCursorPos(castSpell.mouse)
@@ -530,7 +530,7 @@ local ticker = GetTickCount()
 					Control.SetCursorPos(castSpell.mouse)
 					castSpell.state = 0
 				end
-			end,Game.Latency()/500)
+			end,Game.Latency()/200)
 		end
 		if ticker - castSpell.casting > Game.Latency() then
 			Control.SetCursorPos(castSpell.mouse)
@@ -553,7 +553,7 @@ function aaTick()
 		if myHero.attackData.state == 1 then
 			aa.state = 1
 		end
-		if Game.Timer() + Game.Latency()/500 - myHero.attackData.castFrame/200 > myHero.attackData.endTime - myHero.attackData.windDownTime and aa.state == 2 then
+		if Game.Timer() + Game.Latency()/200 - myHero.attackData.castFrame/200 > myHero.attackData.endTime - myHero.attackData.windDownTime and aa.state == 2 then
 			-- print("OnAttackComp WindUP:"..myHero.attackData.endTime)
 			aa.state = 3
 			aa.tick2 = GetTickCount()
@@ -600,7 +600,7 @@ local ticker = GetTickCount()
 					Control.SetCursorPos(castAttack.mouse)
 					castAttack.state = 0
 				end
-			end,Game.Latency()/500)
+			end,Game.Latency()/200)
 		end
 		if ticker - castAttack.casting > Game.Latency() and castAttack.state == 1 then
 			Control.SetCursorPos(castAttack.mouse)
@@ -850,7 +850,7 @@ function LazyXerath:useQ()
 	if Game.CanUseSpell(_Q) == 0 and castSpell.state == 0 then
 		local target = GetTarget(1500,"AP")
 		if target then
-			local qPred = GetPred(target,math.huge,0.20 + Game.Latency()/500)
+			local qPred = GetPred(target,math.huge,0.20 + Game.Latency()/200)
 			local qPred2 = GetPred(target,math.huge,1)
 			if qPred and qPred2 then
 				if GetDistance(myHero.pos,qPred2) < 1500 then
@@ -939,7 +939,7 @@ function LazyXerath:EnemyLoop()
 									Control.KeyDown(HK_Q)
 								end
 							else
-								local qPred = GetPred(target,math.huge,0.20 + Game.Latency()/500)
+								local qPred = GetPred(target,math.huge,0.20 + Game.Latency()/200)
 								self:useQonTarget(target,qPred)
 							end
 						end
@@ -947,7 +947,7 @@ function LazyXerath:EnemyLoop()
 				end
 				if LazyMenu.Killsteal.useW:Value() then
 					if Game.CanUseSpell(_W) == 0 and GetDistance(myHero.pos,target.pos) < self.W.range then
-						local wPred = GetPred(target,math.huge,0.35)
+						local wPred = GetPred(target,math.huge,0.20)
 						self:useWkill(target,wPred)
 					end
 				end
